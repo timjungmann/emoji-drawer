@@ -1,9 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-}
-
-html {
   box-sizing: border-box;
   font-size: 16px;
 }
@@ -18,12 +15,103 @@ img {
 }
 
 body {
-  width: 100vw;
+  background-color: #f2f1e7;
+  padding: 20px;
+  width: 100%;
   height: 100vh;
+}
+body .container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 220px auto;
+  outline: 1px solid black;
+  overflow: hidden;
 }
 
 #canvas {
-  border: 2px solid black;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.control {
+  padding: 20px;
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.control .button {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+.control .button p {
+  user-select: none;
+  text-align: center;
+  font-size: 3rem;
+}
+.control .button::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 5%;
+  border-top-left-radius: 180px;
+  border-top-right-radius: 180px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 90%;
+  height: 40%;
+  filter: blur(6px);
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+}
+.control .emoji-button {
+  margin-bottom: 40px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.control .emoji-button #emoji {
+  font-size: 75px;
+  transform: translateY(4px);
+}
+.control .emoji-button::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 5%;
+  border-top-left-radius: 180px;
+  border-top-right-radius: 180px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 90%;
+  height: 40%;
+  filter: blur(6px);
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+}
+.control .top-control .slider-container {
+  display: flex;
+  justify-content: center;
+}
+.control .top-control .slider-container .slider {
+  width: 90%;
+  height: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border-top: 1px solid black;
+}
+.control .top-control .slider-container .slider::-webkit-slider-thumb {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f2f1e7;
+  box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, 0.1);
 }
 
 /*# sourceMappingURL=main.css.map */

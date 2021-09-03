@@ -1,5 +1,34 @@
-// Mixins
+@mixin flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-// @mixin name {
-//   // your rules
-// }
+@mixin flex-hor{
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-ver{
+  display: flex;
+  align-items: center;
+}
+
+@mixin slider{
+  width: 90%;
+  height: 0;
+  // transition: $col-transition;
+  -webkit-appearance: none;
+  appearance: none;
+  border-top: $border;
+  &::-webkit-slider-thumb{
+    cursor:pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: $bgc;
+    box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, 0.1);
+  }
+}
