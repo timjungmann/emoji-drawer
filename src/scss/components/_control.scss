@@ -36,7 +36,9 @@
     height: 140px;
     @include flex;
     #emoji{
-      font-size: 75px;
+      height: 75px;
+      width: 75px;
+      background: url("") center/cover no-repeat;
       transform: translateY(4px);
     }
     &::after {
@@ -55,14 +57,17 @@
     }
   }
   .top-control{
-    .radio-container{
-      
-    }
     .slider-container{
       @include flex-hor;
       .slider{
         @include slider;
       }
+    }
+  }
+
+  .bottom-control{
+    .save-button{
+      margin-top: 20px;
     }
   }
 }

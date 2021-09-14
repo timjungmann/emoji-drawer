@@ -30,6 +30,8 @@ body .container {
 }
 
 #canvas {
+  width: 100%;
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -75,7 +77,9 @@ body .container {
   align-items: center;
 }
 .control .emoji-button #emoji {
-  font-size: 75px;
+  height: 75px;
+  width: 75px;
+  background: url("") center/cover no-repeat;
   transform: translateY(4px);
 }
 .control .emoji-button::after {
@@ -112,6 +116,9 @@ body .container {
   border-radius: 50%;
   background: #f2f1e7;
   box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, 0.1);
+}
+.control .bottom-control .save-button {
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=main.css.map */

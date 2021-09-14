@@ -10,17 +10,18 @@ const sizeSlider = document.querySelector(".slider");
 // * Get Emojis
 let emojis;
 
-async function fetchEmojis() {
-  const data = await(await fetch('../emoji.json')).json();
-  emojis = data;
-  console.log(emojis);
-}
+// async function fetchEmojis() {
+//   const data = await(await fetch('../emoji.json')).json();
+//   emojis = data;
+//   console.log(emojis);
+// }
 
-fetchEmojis();
+// fetchEmojis();
 
-
-// * On Load
-window.addEventListener("load",()=>{
+fetch("../emoji.json")
+.then(res=>res.json())
+.then(data=>emojis = data)
+.then(()=>{
   // * Variables
   let clickEnabled = true;
 
@@ -39,20 +40,24 @@ window.addEventListener("load",()=>{
   }
 
   function changeRandomEmoji(){
-    if(clickEnabled){
-      clickEnabled = false;
-      myInterval = setInterval(()=>{
-        const randomEmoji = getRandomEmoji();
-        emojiContent.innerText = randomEmoji;
-      }, 80);
-      setTimeout(()=>{
-        clearInterval(myInterval);
-        const randomEmoji = getRandomEmoji();
-        emojiContent.innerText = randomEmoji;
-        emoji.src = emojis[randomEmoji];
-        clickEnabled = true;
-      }, 600)
-    }
+    // if(clickEnabled){
+    //   clickEnabled = false;
+    //   myInterval = setInterval(()=>{
+    //     const randomEmoji = getRandomEmoji();
+    //     emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
+    //   }, 80);
+    //   setTimeout(()=>{
+    //     clearInterval(myInterval);
+    //     const randomEmoji = getRandomEmoji();
+    //     emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
+    //     emoji.src = emojis[randomEmoji];
+    //     clickEnabled = true;
+    //   }, 600)
+    // }
+    const randomEmoji = getRandomEmoji();
+    emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
+    emoji.src = emojis[randomEmoji];
+    clickEnabled = true;
   } 
 
 
@@ -67,17 +72,23 @@ window.addEventListener("load",()=>{
   // * Emoji Size
   sizeSlider.addEventListener("input", e=>{
     emoji_size = e.target.value;
-    emojiContent.style.fontSize = `${e.target.value}px`
+    emojiContent.style.height = `${e.target.value}px`;
+    emojiContent.style.width = `${e.target.value}px`
   })
 
 
 
   // * Canvas SetUp
-  canvas.height = window.innerHeight-40;
-  canvas.width = window.innerWidth-260;
-
   const ctx = canvas.getContext("2d");
+  let rect = canvas.getBoundingClientRect();
 
+  canvas.height = rect.height * devicePixelRatio;
+  canvas.width = rect.width * devicePixelRatio;
+
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = rect.height + "px";
 
   // * Canvas Variables & Functions
   let painting = false;
@@ -124,9 +135,4 @@ window.addEventListener("load",()=>{
   canvas.addEventListener("touchstart", startPosition);
   canvas.addEventListener("touchend", endPosition);
   canvas.addEventListener("touchmove", draw);
-}, false);
-
-// window.addEventListener("resize", ()=>{
-//   canvas.height = window.innerHeight;
-//   canvas.width = window.innerWidth;
-// })
+})
