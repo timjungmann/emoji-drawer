@@ -80,7 +80,6 @@ body .container {
   height: 75px;
   width: 75px;
   background: url("") center/cover no-repeat;
-  transform: translateY(4px);
 }
 .control .emoji-button::after {
   content: "";

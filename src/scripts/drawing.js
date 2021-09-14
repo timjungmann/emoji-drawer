@@ -26,6 +26,7 @@ fetch("../emoji.json")
   let clickEnabled = true;
 
   var emoji = new Image();
+  // emoji.crossOrigin = 'Anonymous';
   changeRandomEmoji()
 
 
@@ -55,8 +56,8 @@ fetch("../emoji.json")
     //   }, 600)
     // }
     const randomEmoji = getRandomEmoji();
-    emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
-    emoji.src = emojis[randomEmoji];
+    emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
+    emoji.src = `../images/${emojis[randomEmoji]}`;
     clickEnabled = true;
   } 
 
@@ -67,6 +68,17 @@ fetch("../emoji.json")
   function clearCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
+
+
+  // * Save as PNG
+  saveButton.addEventListener("click", savePng)
+  
+  function savePng(){
+    var link = document.getElementById('link');
+    link.setAttribute('download', 'emoji-drawing.png');
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    link.click();
+  };
 
 
   // * Emoji Size
