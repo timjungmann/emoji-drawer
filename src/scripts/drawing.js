@@ -10,14 +10,6 @@ const sizeSlider = document.querySelector(".slider");
 // * Get Emojis
 let emojis;
 
-// async function fetchEmojis() {
-//   const data = await(await fetch('../emoji.json')).json();
-//   emojis = data;
-//   console.log(emojis);
-// }
-
-// fetchEmojis();
-
 fetch("../emoji.json")
 .then(res=>res.json())
 .then(data=>emojis = data)
@@ -36,29 +28,33 @@ fetch("../emoji.json")
   function getRandomEmoji(){
     const randomIndex = Math.floor(Math.random() * Object.keys(emojis).length);
     const randomEmoji = Object.keys(emojis)[randomIndex];
-    console.log(randomEmoji);
     return randomEmoji;
   }
 
   function changeRandomEmoji(){
-    // if(clickEnabled){
-    //   clickEnabled = false;
-    //   myInterval = setInterval(()=>{
-    //     const randomEmoji = getRandomEmoji();
-    //     emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
-    //   }, 80);
-    //   setTimeout(()=>{
-    //     clearInterval(myInterval);
-    //     const randomEmoji = getRandomEmoji();
-    //     emojiContent.style.backgroundImage = `url(${emojis[randomEmoji]})`;
-    //     emoji.src = emojis[randomEmoji];
-    //     clickEnabled = true;
-    //   }, 600)
-    // }
-    const randomEmoji = getRandomEmoji();
-    emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
-    emoji.src = `../images/${emojis[randomEmoji]}`;
-    clickEnabled = true;
+    const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
+    console.log(isMobileDevice);
+    if(isMobileDevice){
+      const randomEmoji = getRandomEmoji();
+      emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
+      emoji.src = `../images/${emojis[randomEmoji]}`;
+      clickEnabled = true;
+    } else{
+      if(clickEnabled){
+        clickEnabled = false;
+        myInterval = setInterval(()=>{
+          const randomEmoji = getRandomEmoji();
+          emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
+        }, 80);
+        setTimeout(()=>{
+          clearInterval(myInterval);
+          const randomEmoji = getRandomEmoji();
+          emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
+          emoji.src = `../images/${emojis[randomEmoji]}`;
+          clickEnabled = true;
+        }, 600)
+      }
+    }
   } 
 
 
@@ -142,7 +138,6 @@ fetch("../emoji.json")
   // * Canvas EventListeners
   canvas.addEventListener("mousedown", startPosition);
   window.addEventListener("mouseup", endPosition);
-  // canvas.addEventListener("mouseout", endPosition);
   canvas.addEventListener("mousemove", draw);
   canvas.addEventListener("touchstart", startPosition);
   canvas.addEventListener("touchend", endPosition);

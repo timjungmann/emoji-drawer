@@ -1,20 +1,20 @@
 .control{
-  padding: 20px;
-  border-right: $border;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 20px 10px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
   .button{
-    cursor: pointer;
     position: relative;
     width: 100%;
+    transition: background-color .1s;
     background-color: rgba(0, 0, 0, 0.15);
     border-radius: 50px;
     box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.15);
     p{
       user-select: none;
       text-align: center;
-      font-size: 3rem;
+      font-size: 4rem;
+      transform: translateY(8px);
     }
     &::after {
       content: "";
@@ -30,9 +30,11 @@
       filter: blur(6px);
       background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 0));
     }
+    &:active{
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
   .emoji-button{
-    margin-bottom: 40px;
     height: 140px;
     @include flex;
     #emoji{
@@ -58,16 +60,50 @@
   }
   .top-control{
     .slider-container{
-      @include flex-hor;
       .slider{
-        @include slider;
+        display: none;
       }
     }
   }
 
   .bottom-control{
-    .save-button{
-      margin-top: 20px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 150px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .control{
+    padding: 20px;
+    border-right: $border;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .button{
+      cursor: pointer;
+    }
+    .emoji-button{
+      margin-bottom: 40px;
+      height: 140px;
+    }
+    .top-control{
+      .slider-container{
+        @include flex-hor;
+        .slider{
+          display: block;
+          @include slider;
+        }
+      }
+    }
+  
+    .bottom-control{
+      display: block;
+      .save-button{
+        margin-top: 20px;
+      }
     }
   }
 }

@@ -9,23 +9,28 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   font-weight: normal;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 body{
   background-color: $bgc;
-  padding: 20px;
   width: 100%;
   height: 100vh;
   .container{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 220px auto;
-    outline: $border;
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px auto;
     overflow: hidden;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  body{
+    padding: 20px;
+    .container{
+      grid-template-columns: 220px auto;
+      grid-template-rows: 1fr;
+      outline: $border;
+    }
   }
 }
 

@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "TINY5x3-80";
+  src: url("../../fonts/TINY5x3-80.woff") format("woff"), url("../../fonts/TINY5x3-80.woff2") format("woff2");
+}
+@font-face {
+  font-family: "TINY5x3-100";
+  src: url("../../fonts/TINY5x3-100.woff") format("woff"), url("../../fonts/TINY5x3-100.woff2") format("woff2");
+}
+.button p {
+  font-family: "TINY5x3-80", Arial;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,14 +21,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   font-weight: normal;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 body {
   background-color: #f2f1e7;
-  padding: 20px;
   width: 100%;
   height: 100vh;
 }
@@ -24,28 +30,43 @@ body .container {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 220px auto;
-  outline: 1px solid black;
+  grid-template-columns: 1fr;
+  grid-template-rows: 180px auto;
   overflow: hidden;
 }
 
+@media only screen and (min-width: 992px) {
+  body {
+    padding: 20px;
+  }
+  body .container {
+    grid-template-columns: 220px auto;
+    grid-template-rows: 1fr;
+    outline: 1px solid black;
+  }
+}
 #canvas {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid black;
 }
 
+@media only screen and (min-width: 992px) {
+  #canvas {
+    border-top: none;
+  }
+}
 .control {
-  padding: 20px;
-  border-right: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 20px 10px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
 }
 .control .button {
-  cursor: pointer;
   position: relative;
   width: 100%;
+  transition: background-color 0.1s;
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 50px;
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.15);
@@ -53,7 +74,8 @@ body .container {
 .control .button p {
   user-select: none;
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
+  transform: translateY(8px);
 }
 .control .button::after {
   content: "";
@@ -69,8 +91,10 @@ body .container {
   filter: blur(6px);
   background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
 }
+.control .button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 .control .emoji-button {
-  margin-bottom: 40px;
   height: 140px;
   display: flex;
   justify-content: center;
@@ -95,29 +119,60 @@ body .container {
   filter: blur(6px);
   background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
 }
-.control .top-control .slider-container {
-  display: flex;
-  justify-content: center;
-}
 .control .top-control .slider-container .slider {
-  width: 90%;
-  height: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  border-top: 1px solid black;
+  display: none;
 }
-.control .top-control .slider-container .slider::-webkit-slider-thumb {
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #f2f1e7;
-  box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, 0.1);
+.control .bottom-control {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 150px;
 }
-.control .bottom-control .save-button {
-  margin-top: 20px;
+
+@media only screen and (min-width: 992px) {
+  .control {
+    padding: 20px;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .control .button {
+    cursor: pointer;
+  }
+  .control .emoji-button {
+    margin-bottom: 40px;
+    height: 140px;
+  }
+  .control .top-control .slider-container {
+    display: flex;
+    justify-content: center;
+  }
+  .control .top-control .slider-container .slider {
+    display: block;
+    width: 90%;
+    height: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    border-top: 1px solid black;
+  }
+  .control .top-control .slider-container .slider::-webkit-slider-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #F2F1E7;
+    box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, 0.1), inset 0 0 15px 15px rgba(0, 0, 0, 0.05);
+  }
+  .control .bottom-control {
+    display: block;
+  }
+  .control .bottom-control .save-button {
+    margin-top: 20px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
