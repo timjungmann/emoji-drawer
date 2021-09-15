@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing Tool</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="control">
+        <div class="top-control">
+          <div class="emoji-button button">
+            <div id="emoji"></div>
+          </div>
+
+          <!-- <div class="radio-container">
+            <input type="radio" name="mix" id="mix" class="radio" checked>
+            <label for="mix">Mix?</label>
+          </div> -->
+
+          <div class="slider-container">
+            <input type="range" name="size" id="size" class="slider" min="30" max="120" value="75" step="1">
+            <!-- <label for="size">Size</label> -->
+          </div>
+        </div>
+
+        <div class="bottom-control">
+          <div class="clear-button button">
+            <p id="clear">clear</p>
+          </div>
+  
+          <div class="save-button button">
+            <p id="save">save</p>
+          </div>
+          <a id="link"></a>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+    
+    <script src="./scripts/drawing.js"></script>
+  </body>
+</html>
