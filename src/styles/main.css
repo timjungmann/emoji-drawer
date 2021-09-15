@@ -2,10 +2,6 @@
   font-family: "TINY5x3-80";
   src: url("../../fonts/TINY5x3-80.woff") format("woff"), url("../../fonts/TINY5x3-80.woff2") format("woff2");
 }
-@font-face {
-  font-family: "TINY5x3-100";
-  src: url("../../fonts/TINY5x3-100.woff") format("woff"), url("../../fonts/TINY5x3-100.woff2") format("woff2");
-}
 .button p {
   font-family: "TINY5x3-80", Arial;
 }
@@ -27,11 +23,9 @@ body {
   height: 100vh;
 }
 body .container {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 180px auto;
   overflow: hidden;
 }
 
@@ -40,6 +34,7 @@ body .container {
     padding: 20px;
   }
   body .container {
+    display: grid;
     grid-template-columns: 220px auto;
     grid-template-rows: 1fr;
     outline: 1px solid black;
@@ -49,33 +44,34 @@ body .container {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.6);
-  border-top: 1px solid black;
 }
 
-@media only screen and (min-width: 992px) {
-  #canvas {
-    border-top: none;
-  }
-}
 .control {
-  padding: 20px 10px;
+  padding: 10px;
+  width: 100%;
+  position: absolute;
   display: grid;
   gap: 10px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 33fr 67fr;
 }
 .control .button {
+  background-color: #D4D3D0;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100%;
   transition: background-color 0.1s;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(212, 211, 208, 0.8);
   border-radius: 50px;
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
 .control .button p {
   user-select: none;
   text-align: center;
-  font-size: 4rem;
-  transform: translateY(8px);
+  font-size: 3.4rem;
+  transform: translateY(5px);
 }
 .control .button::after {
   content: "";
@@ -92,17 +88,17 @@ body .container {
   background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
 }
 .control .button:active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(212, 211, 208, 0.9);
 }
 .control .emoji-button {
-  height: 140px;
+  padding: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .control .emoji-button #emoji {
-  height: 75px;
-  width: 75px;
+  height: 3.4rem;
+  width: 3.4rem;
   background: url("") center/cover no-repeat;
 }
 .control .emoji-button::after {
@@ -124,14 +120,14 @@ body .container {
 }
 .control .bottom-control {
   display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  height: 150px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
 }
 
 @media only screen and (min-width: 992px) {
   .control {
+    position: unset;
     padding: 20px;
     border-right: 1px solid black;
     display: flex;
@@ -140,10 +136,23 @@ body .container {
   }
   .control .button {
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.15);
+    height: auto;
+  }
+  .control .button p {
+    font-size: 4rem;
+    transform: translateY(8px);
+  }
+  .control .button:active {
+    background-color: rgba(0, 0, 0, 0.1);
   }
   .control .emoji-button {
     margin-bottom: 40px;
     height: 140px;
+  }
+  .control .emoji-button #emoji {
+    height: 75px;
+    width: 75px;
   }
   .control .top-control .slider-container {
     display: flex;

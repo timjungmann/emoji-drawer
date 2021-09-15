@@ -5,7 +5,10 @@ const emojiButton = document.querySelector(".emoji-button");
 const saveButton = document.querySelector(".save-button");
 const clearButton = document.querySelector(".clear-button");
 const sizeSlider = document.querySelector(".slider");
+const control = document.querySelector(".control");
 
+// * Check if mobile
+const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
 
 // * Get Emojis
 let emojis;
@@ -32,8 +35,6 @@ fetch("../emoji.json")
   }
 
   function changeRandomEmoji(){
-    const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
-    console.log(isMobileDevice);
     if(isMobileDevice){
       const randomEmoji = getRandomEmoji();
       emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
@@ -100,9 +101,10 @@ fetch("../emoji.json")
 
   // * Canvas Variables & Functions
   let painting = false;
-  let emoji_size = 75;
+  let emoji_size = window.innerWidth < 993 ? 58 : 75;
 
   startPosition = (e) => {
+    if(isMobileDevice){control.style.display = "none";}
     var rect = e.target.getBoundingClientRect();
     painting = true;
     e.preventDefault();
@@ -113,6 +115,7 @@ fetch("../emoji.json")
 
   endPosition = (e) => {
     if(painting){
+      if(isMobileDevice){control.style.display = "grid";}
       e.preventDefault();
       ctx.stroke();
       ctx.closePath();

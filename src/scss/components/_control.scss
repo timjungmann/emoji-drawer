@@ -1,20 +1,25 @@
 .control{
-  padding: 20px 10px;
+  padding: 10px;
+  width: 100%;
+  position:absolute;
   display: grid;
   gap: 10px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 33fr 67fr;
   .button{
+    background-color: #D4D3D0;
     position: relative;
+    @include flex;
     width: 100%;
+    height: 100%;
     transition: background-color .1s;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(212, 211, 208, .8);
     border-radius: 50px;
     box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.15);
     p{
       user-select: none;
       text-align: center;
-      font-size: 4rem;
-      transform: translateY(8px);
+      font-size: 3.4rem;
+      transform: translateY(5px);
     }
     &::after {
       content: "";
@@ -31,15 +36,15 @@
       background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 0));
     }
     &:active{
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(212, 211, 208, .9);
     }
   }
   .emoji-button{
-    height: 140px;
+    padding: 10px 0;
     @include flex;
     #emoji{
-      height: 75px;
-      width: 75px;
+      height: 3.4rem;
+      width: 3.4rem;
       background: url("") center/cover no-repeat;
       // transform: translateY(4px);
     }
@@ -68,15 +73,16 @@
 
   .bottom-control{
     display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: 150px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 10px;
+
   }
 }
 
 @media only screen and (min-width: 992px) {
   .control{
+    position:unset;
     padding: 20px;
     border-right: $border;
     display: flex;
@@ -84,10 +90,23 @@
     justify-content: space-between;
     .button{
       cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.15);
+      height: auto;
+      p{
+        font-size:4rem;
+        transform: translateY(8px);
+      }
+      &:active{
+        background-color: rgba(0, 0, 0, 0.1);
+      }
     }
     .emoji-button{
       margin-bottom: 40px;
       height: 140px;
+      #emoji{
+        height: 75px;
+        width: 75px;
+      }
     }
     .top-control{
       .slider-container{

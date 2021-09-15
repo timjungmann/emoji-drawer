@@ -14,11 +14,9 @@ body{
   width: 100%;
   height: 100vh;
   .container{
+    position: relative;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 180px auto;
     overflow: hidden;
   }
 }
@@ -27,6 +25,7 @@ body{
   body{
     padding: 20px;
     .container{
+      display: grid;
       grid-template-columns: 220px auto;
       grid-template-rows: 1fr;
       outline: $border;
