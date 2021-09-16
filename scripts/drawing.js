@@ -51,7 +51,7 @@ fetch("./emoji.json")
           clearInterval(myInterval);
           const randomEmoji = getRandomEmoji();
           emojiContent.style.backgroundImage = `url(./images/${emojis[randomEmoji]})`;
-          emoji.src = `../images/${emojis[randomEmoji]}`;
+          emoji.src = `./images/${emojis[randomEmoji]}`;
           clickEnabled = true;
         }, 600)
       }
