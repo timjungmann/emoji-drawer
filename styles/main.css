@@ -1,6 +1,6 @@
 @font-face {
   font-family: "TINY5x3-80";
-  src: url("../../fonts/TINY5x3-80.woff") format("woff"), url("../../fonts/TINY5x3-80.woff2") format("woff2");
+  src: url("./fonts/TINY5x3-80.woff") format("woff"), url("./fonts/TINY5x3-80.woff2") format("woff2");
 }
 .button p {
   font-family: "TINY5x3-80", Arial;
