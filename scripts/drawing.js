@@ -13,7 +13,7 @@ const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
 // * Get Emojis
 let emojis;
 
-fetch("emoji.json")
+fetch("../emoji.json")
 .then(res=>res.json())
 .then(data=>emojis = data)
 .then(()=>{
