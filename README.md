@@ -5,6 +5,9 @@
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
 ### A vanilla JavaScript application utilizing the HTML canvas element to design, write and draw using Emojis.
+
+[try it out ↗︎](https://timjungmann.github.io/emoji-drawer/)
+
 Instructions:
 - click the emoji in the top left corner to pick a random one
 - drag the slider to adjust Emoji size
