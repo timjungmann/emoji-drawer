@@ -13,7 +13,7 @@ const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
 // * Get Emojis
 let emojis;
 
-fetch("../emoji.json")
+fetch("./emoji.json")
 .then(res=>res.json())
 .then(data=>emojis = data)
 .then(()=>{
@@ -35,27 +35,31 @@ fetch("../emoji.json")
   }
 
   function changeRandomEmoji(){
-    if(isMobileDevice){
-      const randomEmoji = getRandomEmoji();
-      emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
-      emoji.src = `../images/${emojis[randomEmoji]}`;
-      clickEnabled = true;
-    } else{
-      if(clickEnabled){
-        clickEnabled = false;
-        myInterval = setInterval(()=>{
-          const randomEmoji = getRandomEmoji();
-          emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
-        }, 80);
-        setTimeout(()=>{
-          clearInterval(myInterval);
-          const randomEmoji = getRandomEmoji();
-          emojiContent.style.backgroundImage = `url(../images/${emojis[randomEmoji]})`;
-          emoji.src = `../images/${emojis[randomEmoji]}`;
-          clickEnabled = true;
-        }, 600)
-      }
-    }
+    const randomEmoji = getRandomEmoji();
+    emojiContent.style.backgroundImage = `url(./images/${emojis[randomEmoji]})`;
+    emoji.src = `./images/${emojis[randomEmoji]}`;
+    clickEnabled = true;
+    // if(isMobileDevice){
+    //   const randomEmoji = getRandomEmoji();
+    //   emojiContent.style.backgroundImage = `url(./images/${emojis[randomEmoji]})`;
+    //   emoji.src = `./images/${emojis[randomEmoji]}`;
+    //   clickEnabled = true;
+    // } else{
+    //   if(clickEnabled){
+    //     clickEnabled = false;
+    //     myInterval = setInterval(()=>{
+    //       const randomEmoji = getRandomEmoji();
+    //       emojiContent.style.backgroundImage = `url(./images/${emojis[randomEmoji]})`;
+    //     }, 80);
+    //     setTimeout(()=>{
+    //       clearInterval(myInterval);
+    //       const randomEmoji = getRandomEmoji();
+    //       emojiContent.style.backgroundImage = `url(./images/${emojis[randomEmoji]})`;
+    //       emoji.src = `./images/${emojis[randomEmoji]}`;
+    //       clickEnabled = true;
+    //     }, 600)
+    //   }
+    // }
   } 
 
 
